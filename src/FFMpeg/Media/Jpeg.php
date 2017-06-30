@@ -115,8 +115,10 @@ class Jpeg extends AbstractMediaType
         $commands[] = $this->pathfile;
         $commands[] = '-vf';
         $commands[] = 'scale=' . $this->dimension->getWidth() . ':-1';
-        $commands[] = '-vframes 1';
-        $commands[] = '-q 80';
+        $commands[] = '-vframes';
+        $commands[] = '1';
+        $commands[] = '-q';
+        $commands[] = '80';
         $commands[] = '-y';
 
         foreach ($this->filters as $filter) {
