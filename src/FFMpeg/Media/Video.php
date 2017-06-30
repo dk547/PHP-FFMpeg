@@ -256,6 +256,19 @@ class Video extends Audio
     }
 
     /**
+     * Extracts a jpeg preview
+     *
+     * @param  TimeCode $at
+     * @param  Dimension $dimension
+     * @param  integer $duration
+     * @return Jpeg
+     */
+    public function jpg(TimeCode $at, Dimension $dimension, $duration = null)
+    {
+        return new Jpeg($this, $this->driver, $this->ffprobe, $at, $dimension, $duration);
+    }
+
+    /**
      * Concatenates a list of videos into one unique video.
      *
      * @param  array $sources

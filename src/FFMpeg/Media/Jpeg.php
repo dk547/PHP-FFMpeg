@@ -93,7 +93,7 @@ class Jpeg extends AbstractMediaType
      *
      * @param string  $pathfile
      *
-     * @return Gif
+     * @return Jpeg
      *
      * @throws RuntimeException
      */
@@ -115,8 +115,8 @@ class Jpeg extends AbstractMediaType
         $commands[] = $this->pathfile;
         $commands[] = '-vf';
         $commands[] = 'scale=' . $this->dimension->getWidth() . ':-1';
-        $commands[] = '-gifflags';
-        $commands[] = '+transdiff';
+        $commands[] = '-vframes 1';
+        $commands[] = '-q 80';
         $commands[] = '-y';
 
         foreach ($this->filters as $filter) {
@@ -129,7 +129,7 @@ class Jpeg extends AbstractMediaType
             $this->driver->command($commands);
         } catch (ExecutionFailureException $e) {
             $this->cleanupTemporaryFile($pathfile);
-            throw new RuntimeException('Unable to save gif', $e->getCode(), $e);
+            throw new RuntimeException('Unable to save jpeg', $e->getCode(), $e);
         }
 
         return $this;
