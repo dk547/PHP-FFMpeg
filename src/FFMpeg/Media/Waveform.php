@@ -141,7 +141,7 @@ class Waveform extends AbstractMediaType
          */
         $commands = array(
             '-y', '-i', $this->pathfile, '-filter_complex',
-            'showwavespic=colors='.$this->compileColors().':s='.$this->width.'x'.$this->height,
+            'compand,showwavespic=colors='.$this->compileColors().':s='.$this->width.'x'.$this->height,
             '-frames:v', '1'
         );
 
